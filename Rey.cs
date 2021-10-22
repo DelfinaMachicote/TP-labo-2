@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP_labo_2
 {
-    class Rey:Pieza
+    class Rey : Pieza
     {
         public Rey(int x, int y)
         {
@@ -14,14 +14,17 @@ namespace TP_labo_2
             this.y = y;
         }
 
-        void Mover(bool[,] tablero)
+        public void Mover(bool[,] tablero)
         {
-
-            tablero[x, y + 1] = true;//muevo hacia arriba
-            tablero[x + 1, y] = true;//muevo hacia la derecha
-            tablero[x, y - 1] = true;//muevo hacia abajo
-            tablero[x - 1, y] = true;//muevo hacia la izquierda
+            if (y + 1 <= 8)
+                tablero[x, y + 1] = true;//muevo hacia arriba
+            if (x + 1 <= 8)
+                tablero[x + 1, y] = true;//muevo hacia la derecha
+            if (y - 1 >= 1)
+                tablero[x, y - 1] = true;//muevo hacia abajo
+            if (x - 1 >= 1)
+                tablero[x - 1, y] = true;//muevo hacia la izquierda
         }
     }
-   
+
 }

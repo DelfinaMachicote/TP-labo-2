@@ -9,36 +9,161 @@ namespace TP_labo_2
 
     class Program
     {
-
-       
         
-           
-    
-    
         static void Main(string[] args)
         {
-            Random rnd = new Random();
+             Random rnd = new Random();
 
             int cont_tableros = 0;
+            //bool[,] matrizOriginal = random(n, 50); //Creo la matriz random
             bool[,] tablero = new bool[8, 8];
             int cont_posiciones = 0;
-            int Torre1, Torre2, Alfil2, Reina, Rey, Caballo1, Caballo2;
 
-            /* Posicion pos_T1 = new Posicion(rnd.Next(8, 8), rnd.Next(8, 8));
-             Posicion pos_T2 = new Posicion(rnd.Next(8, 8), rnd.Next(8, 8));
-             Posicion pos_A1 = new Posicion(rnd.Next(8, 8), rnd.Next(8, 8));
-             Posicion pos_A2 = new Posicion(rnd.Next(8, 8), rnd.Next(8, 8));
-             Posicion pos_Reina = new Posicion(rnd.Next(8, 8), rnd.Next(8, 8));
-             Posicion pos_Rey = new Posicion(rnd.Next(8, 8), rnd.Next(8, 8));
-             Posicion pos_C1 = new Posicion(rnd.Next(8, 8), rnd.Next(8, 8));
-             Posicion pos_C2 = new Posicion(rnd.Next(8, 8), rnd.Next(8, 8));
-            */
+
+            //genero todas las piezas sin restricciones en las posiciones
+            Reina reina = new Reina(rnd.Next(1, 8), rnd.Next(1, 8));
+            Rey rey = new Rey(rnd.Next(1, 8), rnd.Next(1, 8));
+            Torre torre1= new Torre(rnd.Next(1, 8), rnd.Next(1, 8));
+            Torre torre2 = new Torre(rnd.Next(1, 8), rnd.Next(1, 8));
+            Alfil alfil1=new Alfil(rnd.Next(1, 8), rnd.Next(1, 8));
+            Alfil alfil2 = new Alfil(rnd.Next(1, 8), rnd.Next(1, 8));
+            Caballo caballo1=new Caballo(rnd.Next(1, 8), rnd.Next(1, 8));
+            Caballo caballo2 = new Caballo(rnd.Next(1, 8), rnd.Next(1, 8));
+
+           
+
+
             while (cont_tableros <= 10)
             {
+                cont_tableros++;
+                //me aseguro de que se cumplan todas las restricciones
+                Asignar(reina, rey, torre1, torre2, alfil1, alfil2, caballo1, caballo2);
+
+                //muevo cada pieza
+                reina.Mover(tablero);
+                rey.Mover(tablero);
+                alfil1.Mover(tablero);
+                alfil2.Mover(tablero);
+                torre1.Mover(tablero);
+                torre2.Mover(tablero);
+                caballo1.Mover(tablero);
+                caballo2.Mover(tablero);
+
 
             }
 
         }
+        public static void Asignar(Reina reina,Rey rey, Torre t1,Torre t2,Alfil a1,Alfil a2,Caballo c1, Caballo c2)
+        {//pasamos todas las piezas por separado porque salta error cada vez que casteamos la clase padre
 
-    }
+
+            Random rnd = new Random();
+
+            
+
+            t1.y = 1;//la torre 1 estara en la columna 1
+            t2.y = 8;//la torre 2 estara en la columna 8
+
+            //verifico que ninguna pieza este en las mismas columnas que las torres
+            if (rey.y == 8 || rey.y == 1)
+            {
+                rey.y = rnd.Next(2, 7);
+            }
+            if (a1.y == 8 || a1.y == 1)
+            {
+                a1.y = rnd.Next(2, 7);
+            }
+            if (a2.y == 8 || a2.y == 1)
+            {
+                a2.y = rnd.Next(2, 7);
+            }
+            if (c1.y == 8 || c1.y == 1)
+            {
+                c1.y = rnd.Next(2, 7);
+            }
+            if (c2.y == 8 || c2.y == 1)
+            {
+                c2.y = rnd.Next(2, 7);
+            }
+
+            if (t1.x == t2.x)//las torres no pueden estar en la misma fila
+            {
+                if (t2.x + 1 <= 8)
+                    t2.x = t2.x + 1;//si esto pasa, incremento la fila de t2
+                else t2.x = 1;
+            }
+            if(reina.x== t1.x || reina.x == t2.x)//si la reina esta en la misma fila que alguna de las dos torres, incremento una fila
+            {
+                if (reina.x + 1 <= 6)
+                {
+                    reina.x = reina.x + 1;
+                }
+                else reina.x = 3;
+            }
+            //veo que la reina no se superponga con ninguna pieza
+            while((reina.x==rey.x&& reina.y == rey.y)|| (reina.x == a1.x && reina.y == a1.y)||(reina.x == a2.x && reina.y == a2.y)|| (reina.x == c2.x && reina.y == c2.y) || (reina.x == c1.x && reina.y == c1.y))
+            {
+                reina.x = rnd.Next(3, 6);
+                reina.y = rnd.Next(3, 6);
+            }
+            //veo que el rey no se superponga con ninguna pieza
+            while ((reina.x == rey.x && reina.y == rey.y) || (rey.x == a1.x && rey.y == a1.y) || (rey.x == a2.x && rey.y == a2.y) )
+            {
+                rey.x = rnd.Next(1, 8);
+                rey.y = rnd.Next(2, 7);
+            }
+            //veo que el alfil 1 no se superponga con ninguna pieza
+            while ((a1.x == rey.x && a1.y == rey.y)  || (reina.x == a1.x && reina.y == a1.y)|| (a1.x == a2.x && a1.y == a2.y)|| (a1.x == c1.x && a1.y == c1.y)|| (a1.x == c2.x && a1.y == c2.y))
+            {
+                a1.x = rnd.Next(1, 8);
+                a1.y = rnd.Next(2, 7);
+            }
+            //veo que el alfil 2 no se superponga con ninguna pieza
+            while ((a2.x == rey.x && a2.y == rey.y) || (reina.x == a2.x && reina.y == a2.y) || (a1.x == a2.x && a1.y == a2.y) || (a2.x == c1.x && a2.y == c1.y) || (a2.x == c2.x && a2.y == c2.y))
+            {
+                a2.x = rnd.Next(1, 8);
+                a2.y = rnd.Next(2, 7);
+            }
+            //veo que el caballo 1 no se superponga con ninguna pieza
+            while ((reina.x == c1.x && reina.y == c1.y) || (c1.x == a2.x && c1.y == a2.y) || (a1.x == c1.x && a1.y == c1.y) || (c1.x == c2.x && c1.y == c2.y)|| (a2.x == c1.x && a2.y == c1.y))
+            {
+                c1.x = rnd.Next(1, 8);
+                c1.y = rnd.Next(2, 7);
+            }
+            //veo que el caballo 2 no se superponga con ninguna pieza
+            while ((reina.x == c2.x && reina.y == c2.y) || (c2.x == a2.x && c2.y == a2.y) || (c2.x == c1.x && c2.y == c1.y) || (a1.x == c2.x && a1.y == c2.y) || (a2.x == c2.x && a2.y == c2.y))
+            {
+                c2.x = rnd.Next(1, 8);
+                c2.y = rnd.Next(2, 7);
+            }
+        }
+
+    }   
 }
+/*   public class Percolation
+        {
+            // Devuelvo una matriz booleana aleatoria de nxn, donde cada entrada tiene una probabilidad p
+            // (entre 0 y 100) de estar llena
+            public static bool[,] random(int n, int p)
+            {
+                var rand = new Random(25); // Sacar el numero entre parentesis para semillas aleatorias
+                int devuelto;
+                bool[,] a = new bool[n, n];
+                for (int i = 0; i < n; i++)
+                    for (int j = 0; j < n; j++)
+                    {
+                        devuelto = rand.Next(0, 100);
+                        if (devuelto < p)
+                            a[i, j] = true;
+                        else
+                            a[i, j] = false;
+                    }
+
+
+
+
+
+
+                return a;
+            }
+*/

@@ -13,7 +13,7 @@ namespace TP_labo_2
             this.x = x;
             this.y = y;
         }
-        void Mover(bool[,] tablero)
+        public void Mover(bool[,] tablero)
         {
             for (int i = 0; i < 8; i++)//diagonal arriba a la derecha
             {

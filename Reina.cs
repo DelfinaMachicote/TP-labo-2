@@ -22,7 +22,7 @@ namespace TP_labo_2
             Posiciones();//achico el tablero
         }
 
-        void Mover(bool[,] tablero)
+        public void Mover( bool[,] tablero)
         {
             
             for (int i = x; i < 8 - x; i++)//muevo a la derecha
