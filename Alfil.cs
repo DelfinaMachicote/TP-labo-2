@@ -8,36 +8,36 @@ namespace TP_labo_2
 {
     class Alfil:Pieza
     {
-        public Alfil()
+        public Alfil(int x,int y)
         {
-            int x;
-            int y;
+            this.x = x;
+            this.y = y;
         }
-        void Mover(bool tablero[,])
+        void Mover(bool[,] tablero)
         {
             for (int i = 0; i < 8; i++)//diagonal arriba a la derecha
             {
                 if (x + i > 8 || y + i > 8)
                     break;
-                tablero[x + i, y + i] = 1;
+                tablero[x + i, y + i] = true;
             }
             for (int i = 0; i < 8; i++)//diagonal arriba a la izquierda
             {
                 if (x - i < 1 || y + i > 8)
                     break;
-                tablero[x - i, y + i] = 1;
+                tablero[x - i, y + i] = true;
             }
             for (int i = 0; i < 8; i++)//diagonal abajo a la derecha
             {
                 if (x + i > 8 || y - i < 1)
                     break;
-                tablero[x + i, y - i] = 1;
+                tablero[x + i, y - i] = true;
             }
             for (int i = 0; i < 8; i++)//diagonal abajo a la izquierda
             {
                 if (x - i > 8 || y - i > 8)
                     break;
-                tablero[x - i, y - i] = 1;
+                tablero[x - i, y - i] = true;
             }
         }
     }

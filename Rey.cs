@@ -6,20 +6,22 @@ using System.Threading.Tasks;
 
 namespace TP_labo_2
 {
-    class Rey
+    class Rey:Pieza
     {
-        public Rey()
+        public Rey(int x, int y)
         {
-            int x;
-            int y;
+            this.x = x;
+            this.y = y;
+        }
+
+        void Mover(bool[,] tablero)
+        {
+
+            tablero[x, y + 1] = true;//muevo hacia arriba
+            tablero[x + 1, y] = true;//muevo hacia la derecha
+            tablero[x, y - 1] = true;//muevo hacia abajo
+            tablero[x - 1, y] = true;//muevo hacia la izquierda
         }
     }
-    void Mover(bool tablero[,])
-    {
-        if
-        tablero[x, y + 1] = 1;//muevo hacia arriba
-        tablero[x+1, y ] = 1;//muevo hacia la derecha
-        tablero[x, y - 1] = 1;//muevo hacia abajo
-        tablero[x-1, y ] = 1;//muevo hacia la izquierda
-    }
+   
 }

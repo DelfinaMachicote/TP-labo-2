@@ -10,6 +10,6 @@ namespace TP_labo_2
     class Pieza
     {
         public int x, y;
-        public Pieza(int X, int Y) { x = X; y = Y; }
+        public Pieza() { int x; int y; }
     }
 }

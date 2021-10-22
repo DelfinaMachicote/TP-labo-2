@@ -15,56 +15,56 @@ namespace TP_labo_2
             if (y > 6) y = 6;
             if (y < 3) y = 3;
         }
-        public Reina()
+        public Reina(int x,int y)
         {
-            int x;
-            int y;
+            this.x = x;
+            this.y = y;
             Posiciones();//achico el tablero
         }
 
-        void Mover(bool tablero[,])
-        {ooo
+        void Mover(bool[,] tablero)
+        {
             
             for (int i = x; i < 8 - x; i++)//muevo a la derecha
             {
-                tablero[i, y] = 1;
+                tablero[i, y] = true;
             }
             for(int i = x; i > 1; i--)//muevo a la izquierda
             {
-                tablero[i, y] = 1;
+                tablero[i, y] = true;
             }
             for(int i = y; i < 8-y; i++)//muevo hacia arriba
             {
-                tablero[x, i] = 1;
+                tablero[x, i] = true;
             }
             for(int i = y; i > 1; i--)//muevo hacia abajo
             {
-                tablero[x, i] = 1;
+                tablero[x, i] = true;
             }
 
             for(int i=0;i<8;i++)//diagonal arriba a la derecha
             {
                 if (x + i > 8 || y + i > 8)
                     break;
-                tablero[x + i, y + i] = 1;
+                tablero[x + i, y + i] = true;
             }
             for(int i = 0; i < 8; i++)//diagonal arriba a la izquierda
             {
                 if (x - i <1 || y + i > 8)
                     break;
-                tablero[x - i, y + i] = 1;
+                tablero[x - i, y + i] = true;
             }
             for (int i = 0; i < 8; i++)//diagonal abajo a la derecha
             {
                 if (x + i > 8 || y - i <1)
                     break;
-                tablero[x + i, y - i] = 1;
+                tablero[x + i, y - i] = true;
             }
             for (int i = 0; i < 8; i++)//diagonal abajo a la izquierda
             {
                 if (x - i > 8 || y - i > 8)
                     break;
-                tablero[x - i, y - i] = 1;
+                tablero[x - i, y - i] = true;
             }
         }
     }
