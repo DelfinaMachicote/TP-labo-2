@@ -23,7 +23,7 @@ namespace TP_labo_2
         }
 
         void Mover(bool tablero[,])
-        {
+        {ooo
             
             for (int i = x; i < 8 - x; i++)//muevo a la derecha
             {
