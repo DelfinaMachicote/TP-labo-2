@@ -10,10 +10,10 @@ namespace TP_labo_2
     {
         void Posiciones()//restricciones para colocar la reina en el tablero: cuadrado [3X6]
         {
-            if (x > 6) x = 6;
-            if (x < 3) x = 3;
-            if (y > 6) y = 6;
-            if (y < 3) y = 3;
+            if (x > 5) x = 5;
+            if (x < 2) x = 2;
+            if (y > 5) y = 5;
+            if (y < 2) y = 2;
         }
         public Reina(int x,int y)
         {
