@@ -16,7 +16,7 @@ namespace TP_labo_2
         public void Mover(bool[,] tablero)
         {
 
-            for (int i = x; i < 8 - x; i++)//muevo a la derecha
+            for (int i = x; i < 7 - x; i++)//muevo a la derecha
             {
                 tablero[i, y] = true;
             }

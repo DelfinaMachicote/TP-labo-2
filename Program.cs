@@ -30,12 +30,12 @@ namespace TP_labo_2
             Caballo caballo1=new Caballo(rnd.Next(1, 8), rnd.Next(1, 8));
             Caballo caballo2 = new Caballo(rnd.Next(1, 8), rnd.Next(1, 8));
 
-           
+            Imprimir(tablero);
 
 
             while (cont_tableros <= 10)
             {
-                cont_tableros++;
+               
                 //me aseguro de que se cumplan todas las restricciones
                 Asignar(reina, rey, torre1, torre2, alfil1, alfil2, caballo1, caballo2);
 
@@ -49,7 +49,16 @@ namespace TP_labo_2
                 caballo1.Mover(tablero);
                 caballo2.Mover(tablero);
 
+                //cuento los casilleros del tablero que se llenaron
+                cont_posiciones = Contar(tablero);
 
+                //si el tablero esta lleno, se imprime
+                if(cont_posiciones == 64)
+                {
+                    cont_tableros++;
+                    Console.WriteLine("Tablero numero ", cont_tableros);
+                    Imprimir(tablero);
+                }
             }
 
         }
@@ -138,32 +147,31 @@ namespace TP_labo_2
             }
         }
 
+        public static int Contar(bool[,] tablero)
+        {
+            int contador = 0;
+            for(int i = 0; i < 8; i++)
+            {
+                for(int j = 0; j < 8; j++)
+                {
+                    if (tablero[i, j] == true)
+                        contador++;
+                }
+            }
+            return contador;
+        }
+
+        public static void Imprimir(bool[,] tablero)
+        {
+            
+            for(int i = 0; i < 8; i++)
+            {
+                for(int j = 0; j < 8; j++)
+                {
+                    Console.WriteLine(tablero[j, i]);
+                }
+                Console.WriteLine("\n");
+            }
+        }
     }   
 }
-/*   public class Percolation
-        {
-            // Devuelvo una matriz booleana aleatoria de nxn, donde cada entrada tiene una probabilidad p
-            // (entre 0 y 100) de estar llena
-            public static bool[,] random(int n, int p)
-            {
-                var rand = new Random(25); // Sacar el numero entre parentesis para semillas aleatorias
-                int devuelto;
-                bool[,] a = new bool[n, n];
-                for (int i = 0; i < n; i++)
-                    for (int j = 0; j < n; j++)
-                    {
-                        devuelto = rand.Next(0, 100);
-                        if (devuelto < p)
-                            a[i, j] = true;
-                        else
-                            a[i, j] = false;
-                    }
-
-
-
-
-
-
-                return a;
-            }
-*/
