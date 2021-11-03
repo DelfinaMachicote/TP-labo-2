@@ -16,21 +16,21 @@ namespace TP_labo_2
         public void Mover(bool[,] tablero)
         {
 
-            for (int i = x; i < 7 - x; i++)//muevo a la derecha
+            for (int i = this.x; i < 8 ; i++)//muevo a la derecha
             {
-                tablero[i, y] = true;
+                tablero[i, this.y] = true;
             }
-            for (int i = x; i > 1; i--)//muevo a la izquierda
+            for (int i = this.x; i >=0; i--)//muevo a la izquierda
             {
-                tablero[i, y] = true;
+                tablero[i, this.y] = true;
             }
-            for (int i = y; i < 8 - y; i++)//muevo hacia arriba
+            for (int i = this.y; i < 8 ; i++)//muevo hacia arriba
             {
-                tablero[x, i] = true;
+                tablero[this.x, i] = true;
             }
-            for (int i = y; i > 1; i--)//muevo hacia abajo
+            for (int i = this.y; i >=0; i--)//muevo hacia abajo
             {
-                tablero[x, i] = true;
+                tablero[this.x, i] = true;
             }
         }
     }

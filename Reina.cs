@@ -25,19 +25,19 @@ namespace TP_labo_2
         public void Mover( bool[,] tablero)
         {
             
-            for (int i = x; i < 8 - x; i++)//muevo a la derecha
+            for (int i = x; i < 8 ; i++)//muevo hacia arriba
             {
                 tablero[i, y] = true;
             }
-            for(int i = x; i > 1; i--)//muevo a la izquierda
+            for(int i = x; i >= 0; i--)//muevo hacia abajo
             {
                 tablero[i, y] = true;
             }
-            for(int i = y; i < 8-y; i++)//muevo hacia arriba
+            for(int i = y; i < 8; i++)//muevo a la derecha
             {
                 tablero[x, i] = true;
             }
-            for(int i = y; i > 1; i--)//muevo hacia abajo
+            for(int i = y; i >=0; i--)//muevo a la izquierda
             {
                 tablero[x, i] = true;
             }
@@ -48,21 +48,21 @@ namespace TP_labo_2
                     tablero[x + i, y + i] = true;
 
             }
-            for(int i = 0; i < 8; i++)//diagonal arriba a la izquierda
+            for(int i = 0; i < 8; i++)//diagonal abajo a la derecha  
             {
-                if (x - i >1 && y + i < 8)
+                if (x - i >=0 && y + i < 8)
                     tablero[x - i, y + i] = true;
 
             }
-            for (int i = 0; i < 8; i++)//diagonal abajo a la derecha
+            for (int i = 0; i < 8; i++)//diagonal arriba a la izquierda
             {
-                if (x + i < 8 && y - i >1)
+                if (x + i < 8 && y - i >=0)
                     tablero[x + i, y - i] = true;
 
             }
             for (int i = 0; i < 8; i++)//diagonal abajo a la izquierda
             {
-                if (x - i >=1  && y - i >=1 )
+                if (x - i >=0  && y - i >=0 )
                     tablero[x - i, y - i] = true;
 
             }
