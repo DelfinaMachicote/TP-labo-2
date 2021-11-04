@@ -14,26 +14,26 @@ namespace TP_labo_2
             this.y = y;
         }
 
-        public void Mover(bool[,] tablero)
+        public void Mover(char[,] tablero)
         {
-            tablero[x, y] = true;
+            tablero[x, y] = 'R';
             if (y + 1 < 8)
-                tablero[x, y + 1] = true;//muevo hacia arriba
+                tablero[x, y + 1] = '1';//muevo hacia arriba
             if (x + 1 < 8)
-                tablero[x + 1, y] = true;//muevo hacia la derecha
+                tablero[x + 1, y] = '1';//muevo hacia la derecha
             if (y - 1 >= 1)
-                tablero[x, y - 1] = true;//muevo hacia abajo
+                tablero[x, y - 1] = '1';//muevo hacia abajo
             if (x - 1 >= 1)
-                tablero[x - 1, y] = true;//muevo hacia la izquierda
+                tablero[x - 1, y] = '1';//muevo hacia la izquierda
 
             if (y + 1 < 8 && x + 1 < 8)
-                tablero[x + 1, y + 1] = true;
+                tablero[x + 1, y + 1] = '1';
             if (y + 1 < 8 && x - 1 >=0)
-                tablero[x - 1, y + 1] = true;
+                tablero[x - 1, y + 1] = '1';
             if (y - 1 >=0 && x + 1 < 8)
-                tablero[x + 1, y - 1] = true;
+                tablero[x + 1, y - 1] = '1';
             if (y - 1 >=0 && x - 1 >=0)
-                tablero[x - 1, y - 1] = true;
+                tablero[x - 1, y - 1] = '1';
         }
     }
 

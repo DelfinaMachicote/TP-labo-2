@@ -13,25 +13,32 @@ namespace TP_labo_2
             this.x = x;
             this.y = y;
         }
-        public void Mover(bool[,] tablero)
+        public void Mover(char[,] tablero)
         {
+            for (int i = x; i < 8; i++)//muevo hacia arriba
+            {
+                if (tablero[i, y] != 'A' && tablero[i, y] != 'R' && tablero[i, y] != 'C' && tablero[i, y] != 'T')
+                {
+                    tablero[i, y] = '1';
+                }
 
-            for (int i = this.x; i < 8 ; i++)//muevo a la derecha
-            {
-                tablero[i, this.y] = true;
             }
-            for (int i = this.x; i >=0; i--)//muevo a la izquierda
+            for (int i = x; i >= 0; i--)//muevo hacia abajo
             {
-                tablero[i, this.y] = true;
+                if (tablero[i, y] == '0')
+                    tablero[i, y] = '1';
             }
-            for (int i = this.y; i < 8 ; i++)//muevo hacia arriba
+            for (int i = y; i < 8; i++)//muevo a la derecha
             {
-                tablero[this.x, i] = true;
+                if (tablero[x, i] == '0')
+                    tablero[x, i] = '1';
             }
-            for (int i = this.y; i >=0; i--)//muevo hacia abajo
+            for (int i = y; i >= 0; i--)//muevo a la izquierda
             {
-                tablero[this.x, i] = true;
+                if (tablero[x, i] == '0')
+                    tablero[x, i] = '1';
             }
+            tablero[x, y] = 'T';
         }
     }
 }

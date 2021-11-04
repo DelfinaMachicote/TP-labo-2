@@ -19,53 +19,83 @@ namespace TP_labo_2
         {
             this.x = x;
             this.y = y;
-            Posiciones();//achico el tablero
+          //  Posiciones();//achico el tablero
         }
 
-        public void Mover( bool[,] tablero)
+        public void Mover( char[,] tablero)
         {
             
             for (int i = x; i < 8 ; i++)//muevo hacia arriba
             {
-                tablero[i, y] = true;
+                if(tablero[i, y] !='A'&& tablero[i, y] != 'R' && tablero[i, y] != 'C' && tablero[i, y] != 'T')
+                {
+                    tablero[i, y] = '1';
+                }
+                
             }
             for(int i = x; i >= 0; i--)//muevo hacia abajo
             {
-                tablero[i, y] = true;
+                if (tablero[i, y] == '0')
+                    tablero[i, y] = '1';
             }
             for(int i = y; i < 8; i++)//muevo a la derecha
             {
-                tablero[x, i] = true;
+                if (tablero[x, i] == '0')
+                    tablero[x, i] = '1';
             }
             for(int i = y; i >=0; i--)//muevo a la izquierda
             {
-                tablero[x, i] = true;
+                if (tablero[x, i] == '0')
+                    tablero[x, i] = '1';
             }
 
             for(int i=0;i<8;i++)//diagonal arriba a la derecha
             {
-                if (x + i < 8 && y + i < 8)
-                    tablero[x + i, y + i] = true;
+                if (x + i < 8 && y + i < 8) {
+                    if (tablero[x + i, y + i] == '0')
+                    {
+
+                        tablero[x + i, y + i] = '1';
+                    }
+                }
+                    
+                   
 
             }
-            for(int i = 0; i < 8; i++)//diagonal abajo a la derecha  
+            for (int i = 0; i < 8; i++)//diagonal abajo a la derecha  
             {
-                if (x - i >=0 && y + i < 8)
-                    tablero[x - i, y + i] = true;
+                if (x - i >= 0 && y + i < 8)
+                {
+                    if (tablero[x - i, y + i] == '0')
+                    {
 
+                        tablero[x - i, y + i] = '1';
+                    }
+                }
             }
             for (int i = 0; i < 8; i++)//diagonal arriba a la izquierda
             {
-                if (x + i < 8 && y - i >=0)
-                    tablero[x + i, y - i] = true;
+                if (x + i < 8 && y - i >= 0) {
+                    if (tablero[x + i, y - i] == '0')
+                    {
 
+                        tablero[x + i, y - i] = '1';
+                    }
+                }
+                    
             }
             for (int i = 0; i < 8; i++)//diagonal abajo a la izquierda
             {
-                if (x - i >=0  && y - i >=0 )
-                    tablero[x - i, y - i] = true;
+                if (x - i >= 0 && y - i >= 0) {
+                    if (tablero[x - i, y - i] == '0')
+                    {
 
+                        tablero[x - i, y - i] = '1';
+                    }
+                }
+                    
             }
+            tablero[x, y] = 'D';
         }
     }
 }

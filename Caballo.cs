@@ -21,32 +21,62 @@ namespace TP_labo_2
             this.y = y;
             Posiciones();
         }
-        public void Mover(bool[,] tablero)
+        public void Mover(char[,] tablero)
         {
-            tablero[x, y] = true;
-            if ((x + 1 < 8 )&& (y + 2 < 8))
-                tablero[x + 1, y + 2] = true;//arriba a la derecha
+            tablero[x, y] = 'C';
+
+            if ((x + 1 < 8) && (y + 2 < 8))
+            {
+                if(tablero[x + 1, y + 2]=='0')
+                    tablero[x + 1, y + 2] = '1';//arriba a la derecha
+            }
                 
-            if ((x + 1 <  8 )&&( y - 2 >=0))
-                tablero[x + 1, y - 2] = true;//arriba a la izquierda
+
+            if ((x + 1 < 8) && (y - 2 >= 0))
+            {
+                if(tablero[x + 1, y - 2]=='0')
+                    tablero[x + 1, y - 2] = '1';//arriba a la izquierda
+            }
+
 
             if (x + 2 < 8 && y + 1 < 8)
-                tablero[x + 2, y + 1] = true;//a la derecha arriba
+            {
+                if(tablero[x + 2, y + 1] == '0')
+                    tablero[x + 2, y + 1] = '1';//a la derecha arriba
+            }
 
-            if ((x - 2 >=0) && y + 1 < 8 )
-                tablero[x - 2, y + 1] = true;//a la derecha abajo
-
-            if (x + 2 < 8 && y - 1 >=0)
-                tablero[x + 2, y - 1] = true;//a la izquierda arriba
+            if ((x - 2 >= 0) && y + 1 < 8)
+            {
+                if(tablero[x - 2, y + 1]=='0')
+                    tablero[x - 2, y + 1] = '1';//a la derecha abajo
+            }
+            if (x + 2 < 8 && y - 1 >= 0)
+            {
+                if(tablero[x + 2, y - 1]=='0')
+                    tablero[x + 2, y - 1] = '1';//a la izquierda arriba
+            }
+                
 
             if (x - 2 >= 0 && y - 1 >= 0)
-                tablero[x - 2, y - 1] = true;//a la izquierda abajo
+            {
+                if(tablero[x - 2, y - 1]=='0')
+                    tablero[x - 2, y - 1] = '1';//a la izquierda abajo
+            }
+                
 
-            if (x - 1 >=0 && y + 2<8 )
-                tablero[x - 1, y +2] = true;//abajo a la derecha
+            if (x - 1 >= 0 && y + 2 < 8)
+            {
+                if(tablero[x - 1, y + 2]=='0')
+                    tablero[x - 1, y + 2] = '1';//abajo a la derecha
+            }
+                
 
-            if (x - 1 >=0 && y - 2>=0 )
-                tablero[x - 1, y - 2] = true;//abajo a la izquierda
+            if (x - 1 >= 0 && y - 2 >= 0)
+            {
+                if(tablero[x - 1, y - 2]=='0')
+                    tablero[x - 1, y - 2] = '1';//abajo a la izquierda
+            }
+                
         }
     }
 }
